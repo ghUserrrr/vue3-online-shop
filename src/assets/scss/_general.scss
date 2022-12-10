@@ -1,0 +1,71 @@
+body {
+    font-family: "work-sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1460px / 1600px * 100%;
+    max-width: 1460px;
+
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.m-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.btn {
+    font-family: "work-sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    color: #ffffff;
+
+    background: #000000;
+}
+
+// .btn-empty-inside {
+// }
+
+.product-font {
+    font-family: "work-sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
