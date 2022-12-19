@@ -4,27 +4,28 @@
     <div class="product__info flex">
       <h4 class="product__title">{{ product.title }}</h4>
       <span class="product__price">${{ product.price }}</span>
-      <div class="product__colors product-colors product__option">
-        <span class="product-colors__title uppercase">COLOR:</span>
-        <button class="product-colors__btn"></button>
-      </div>
-      <div class="product__sizes product__option">
-        <span class="product-sizes__title uppercase">SIZE:</span>
-        <div class="prosuct-size__buttons">
-          <button
-            v-for="(size, index) in product.availableSizes"
-            :key="index"
-            class="product-sizes__btn"
-          >
-            {{ size }}
-          </button>
+      <div class="product__options">
+        <div class="product__colors product-colors product__option">
+          <span class="product-colors__title uppercase">COLOR:</span>
+          <button class="product-colors__btn"></button>
+        </div>
+        <div class="product__sizes product__option">
+          <span class="product-sizes__title uppercase">SIZE:</span>
+          <div class="prosuct-size__buttons">
+            <button
+              v-for="(size, index) in product.availableSizes"
+              :key="index"
+              class="product-sizes__btn"
+            >
+              {{ size }}
+            </button>
+          </div>
         </div>
       </div>
       <button class="product__btn btn btn-primary uppercase">ADD TO BAG</button>
       <div class="product__accordion product-accordion">
-        <div class="product-accordion__item">
+        <div @click="toggleDetails" class="product-accordion__item">
           <div
-            @click="toggleDetails"
             :class="{ 'margin-0': !isDetailsOpen }"
             class="product-accordion__title-wrapper"
           >
@@ -38,9 +39,8 @@
             </p>
           </div>
         </div>
-        <div class="product-accordion__item">
+        <div @click="toggleSizeInfo" class="product-accordion__item">
           <div
-            @click="toggleSizeInfo"
             :class="{ 'margin-0': !isSizeInfoOpen }"
             class="product-accordion__title-wrapper"
           >
@@ -63,9 +63,8 @@
           </div>
         </div>
 
-        <div class="product-accordion__item">
+        <div @click="toggleShippingInfo" class="product-accordion__item">
           <div
-            @click="toggleShippingInfo"
             :class="{ 'margin-0': !isShippingInfoOpen }"
             class="product-accordion__title-wrapper"
           >
@@ -140,8 +139,6 @@
             </p>
           </div>
         </div>
-
-        <div class="product-accordion__item"></div>
       </div>
       <button>share</button>
     </div>
@@ -152,12 +149,6 @@ import { useProductStore } from "../store/productStore";
 
 export default {
   name: "MyProduct",
-
-  // props: {
-  //   productProp: {
-  //     type: Object,
-  //   },
-  // },
 
   data() {
     return {
@@ -243,11 +234,35 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   padding: 20px 0;
   border-top: 1px solid #bdbdbd;
+  &:last-child {
+    border-bottom: 1px solid #bdbdbd;
+  }
+}
+.product-sizes__title {
+  grid-column-start: span 1;
+}
+
+.product-sizes__btn {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid $main-font-color;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background-color: #000000;
+    color: #fff;
+  }
 }
 
 .product__accordion {
   display: flex;
   flex-direction: column;
+  width: 495px;
 }
 
 .product-accordion__item {
@@ -255,8 +270,15 @@ export default {
 
   border-top: 1px solid #bdbdbd;
 
+  transition: background 0.3s ease;
+  cursor: pointer;
+
   &:last-child {
-    margin-bottom: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+  }
+
+  &:hover {
+    background-color: #f3f3f3;
   }
 }
 
@@ -265,8 +287,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 14px;
-
-  cursor: pointer;
 }
 
 .product-accordion__title {
@@ -277,33 +297,12 @@ export default {
   color: $main-font-color;
 }
 
-// .product-accordion__info-wrapper {
-// }
-
 .product-accordion__description {
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
   line-height: 140%;
   color: $main-font-color;
-}
-
-// .product-colors__title {
-// }
-
-.product-sizes__title {
-  grid-column-start: span 1;
-}
-
-.product-sizes__btn {
-  width: 30px;
-  height: 30px;
-
-  border: 1px solid $main-font-color;
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
 }
 
 .margin-bottom-14 {
