@@ -22,34 +22,34 @@
       </div>
       <button class="product__btn btn btn-primary uppercase">ADD TO BAG</button>
       <div class="product__accordion product-accordion">
-        <span class="product-accordion__title uppercase">DATAILS *</span>
+        <h6 class="product-accordion__title uppercase">DATAILS *</h6>
         <p class="product-accordion__description">
           {{ productProp.details }}
         </p>
       </div>
       <div class="product__accordion">
-        <span class="product-accordion__title uppercase"
-          >SHIPPING & RETURNS *</span
-        >
+        <h6 class="product-accordion__title uppercase">SHIPPING & RETURNS *</h6>
         <span class="product-accordion__title uppercase">SHIPPING INFO</span>
-        <span>Order delivery time:</span>
-        <p>
+        <span class="product-accordion__title">Order delivery time:</span>
+        <p class="product-accordion__description">
           All orders are shipped priority/first class & delivered 5-7 business
           days from the day you place the order.
         </p>
-        <span>Free shipping on orders over $75.</span>
-        <span>Shipping fee:</span>
-        <p>
+        <span class="product-accordion__title"
+          >Free shipping on orders over $75.</span
+        >
+        <span class="product-accordion__title">Shipping fee:</span>
+        <p class="product-accordion__description">
           Up to $10 = $3.75 $10.01 - $30.00 = $4.75 $30.01 - $75.00 = $5.75
           $75.01 & over = free shipping
         </p>
-        <p>
+        <p class="product-accordion__description">
           Up to $10 = $3.75 $10.01 - $30.00 = $4.75 $30.01 - $75.00 = $5.75
           $75.01 & over = free shipping
         </p>
         <span class="product-accordion__title uppercase">RETURNS INFO </span>
-        <span>Free returns.</span>
-        <p>
+        <span class="product-accordion__title">Free returns.</span>
+        <p class="product-accordion__description">
           We will accept all authorized returns All returns are accepted as long
           as the request is made to return the item within 30 days of receiving
           the merchandise. Once approved we will generate the FREE UPS prepaid
