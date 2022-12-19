@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 
 export const useProductStore = defineStore("product", {
     state: () => ({
+        currentId: null,
         filters: {
             color: {
                 name: "Color",
@@ -199,7 +200,7 @@ export const useProductStore = defineStore("product", {
             },
         },
         products: [
-            {
+            {   id: 1,
                 title: "Square Neck Adjustable Shoulder Straps Dress",
                 price: 32,
                 category: "dresses",
@@ -207,9 +208,9 @@ export const useProductStore = defineStore("product", {
                 availableSizes: ["s", "m", "l"],
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
-                image: "products-images/dress-1.jpg",
+                image: "../products-images/dress-1.jpg",
             },
-            {
+            {   id: 2,
                 title: "Cute Multi Color Polak Dot Sweater ",
                 price: 54,
                 category: "coats",
@@ -217,9 +218,9 @@ export const useProductStore = defineStore("product", {
                 availableSizes: ["s", "m", "l"],
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
-                image: "products-images/dress-2.jpg",
+                image: "../products-images/dress-2.jpg",
             },
-            {
+            {   id: 3,
                 title: "Cute Multi Color Polak Dot Sweater ",
                 price: 54,
                 category: "coats",
@@ -228,9 +229,9 @@ export const useProductStore = defineStore("product", {
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
 
-                image: "products-images/dress-2.jpg",
+                image: "../products-images/dress-2.jpg",
             },
-            {
+            {   id: 4,
                 title: "Cute Multi Color Polak Dot Sweater ",
                 price: 54,
                 category: "t-shirts",
@@ -239,9 +240,9 @@ export const useProductStore = defineStore("product", {
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
 
-                image: "products-images/dress-2.jpg",
+                image: "../products-images/dress-2.jpg",
             },
-            {
+            {   id: 5,
                 title: "Cute Multi Color Polak Dot Sweater ",
                 price: 54,
                 category: "shirts",
@@ -250,18 +251,18 @@ export const useProductStore = defineStore("product", {
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
 
-                image: "products-images/dress-2.jpg",
+                image: "../products-images/dress-2.jpg",
             },
-            {
+            {   id: 6,
                 title: "Cute Multi Color Polak Dot Sweater ",
                 price: 54,
                 category: "bottoms",
-                availableColors: ["white"],
+                availableColors: ["black"],
                 availableSizes: ["l"],
                 details:
                     "Solid, short sleeve, round neckline, petal split back detail, slight crop, relaxed fit, unlined, stretchy, non-sheer, basic, casual, comfy, breathable, eco, 100% cotton, sportswear, activewear, yoga & gym look, minimalistic design, spring/summer collection100% Cotton. TSH ",
 
-                image: "products-images/dress-2.jpg",
+                image: "../products-images/dress-2.jpg",
             },
         ],
         cart: [],

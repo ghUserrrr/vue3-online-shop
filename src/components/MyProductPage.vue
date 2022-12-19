@@ -1,9 +1,9 @@
 <template>
   <section class="product flex">
-    <img class="product__img" :src="productProp.image" alt="product image" />
+    <img class="product__img" :src="product.image" alt="product image" />
     <div class="product__info flex">
-      <h4 class="product__title">{{ productProp.title }}</h4>
-      <span class="product__price">${{ productProp.price }}</span>
+      <h4 class="product__title">{{ product.title }}</h4>
+      <span class="product__price">${{ product.price }}</span>
       <div class="product__colors product-colors product__option">
         <span class="product-colors__title uppercase">COLOR:</span>
         <button class="product-colors__btn"></button>
@@ -12,7 +12,7 @@
         <span class="product-sizes__title uppercase">SIZE:</span>
         <div class="prosuct-size__buttons">
           <button
-            v-for="(size, index) in productProp.availableSizes"
+            v-for="(size, index) in product.availableSizes"
             :key="index"
             class="product-sizes__btn"
           >
@@ -22,47 +22,126 @@
       </div>
       <button class="product__btn btn btn-primary uppercase">ADD TO BAG</button>
       <div class="product__accordion product-accordion">
-        <h6 class="product-accordion__title uppercase">DATAILS *</h6>
-        <p class="product-accordion__description">
-          {{ productProp.details }}
-        </p>
-      </div>
-      <div class="product__accordion">
-        <h6 class="product-accordion__title uppercase">SHIPPING & RETURNS *</h6>
-        <span class="product-accordion__title uppercase">SHIPPING INFO</span>
-        <span class="product-accordion__title">Order delivery time:</span>
-        <p class="product-accordion__description">
-          All orders are shipped priority/first class & delivered 5-7 business
-          days from the day you place the order.
-        </p>
-        <span class="product-accordion__title"
-          >Free shipping on orders over $75.</span
-        >
-        <span class="product-accordion__title">Shipping fee:</span>
-        <p class="product-accordion__description">
-          Up to $10 = $3.75 $10.01 - $30.00 = $4.75 $30.01 - $75.00 = $5.75
-          $75.01 & over = free shipping
-        </p>
-        <p class="product-accordion__description">
-          Up to $10 = $3.75 $10.01 - $30.00 = $4.75 $30.01 - $75.00 = $5.75
-          $75.01 & over = free shipping
-        </p>
-        <span class="product-accordion__title uppercase">RETURNS INFO </span>
-        <span class="product-accordion__title">Free returns.</span>
-        <p class="product-accordion__description">
-          We will accept all authorized returns All returns are accepted as long
-          as the request is made to return the item within 30 days of receiving
-          the merchandise. Once approved we will generate the FREE UPS prepaid
-          label, we will email you with the label attached. Just print the
-          label, attach it to any box/package and return the items. You will
-          have 30 days to send the item back for full refund once you receive
-          the free return label. Once we receive the items back we will process
-          the return and refund the balance back to your account. Please note
-          free return labels are available for items being shipped within 48
-          continental states only. Please contact us here ovroefashion@gmail.com
-          to receive an RMA# for your return. Please include your Order#, items
-          returning, and the reason for the return.
-        </p>
+        <div class="product-accordion__item">
+          <div
+            @click="toggleDetails"
+            :class="{ 'margin-0': !isDetailsOpen }"
+            class="product-accordion__title-wrapper"
+          >
+            <h6 class="product-accordion__title uppercase">DATAILS</h6>
+            <img v-if="isDetailsOpen" src="../assets/images/minus.svg" alt="" />
+            <img v-else src="../assets/images/plus.svg" alt="" />
+          </div>
+          <div v-if="isDetailsOpen" class="product-accordion__info-wrapper">
+            <p class="product-accordion__description">
+              {{ product.details }}
+            </p>
+          </div>
+        </div>
+        <div class="product-accordion__item">
+          <div
+            @click="toggleSizeInfo"
+            :class="{ 'margin-0': !isSizeInfoOpen }"
+            class="product-accordion__title-wrapper"
+          >
+            <h6 class="product-accordion__title uppercase">SIZE & FIT</h6>
+            <img
+              v-if="isSizeInfoOpen"
+              src="../assets/images/minus.svg"
+              alt=""
+            />
+            <img v-else src="../assets/images/plus.svg" alt="" />
+          </div>
+          <div v-if="isSizeInfoOpen" class="product-accordion__info-wrapper">
+            <p class="product-accordion__description">
+              Item Measurements: SIZE S
+            </p>
+            <p class="product-accordion__description">
+              Item Measurements: Length: 28", Bust: 32"
+            </p>
+            <p class="product-accordion__description">True to size</p>
+          </div>
+        </div>
+
+        <div class="product-accordion__item">
+          <div
+            @click="toggleShippingInfo"
+            :class="{ 'margin-0': !isShippingInfoOpen }"
+            class="product-accordion__title-wrapper"
+          >
+            <h6 class="product-accordion__title uppercase">
+              SHIPPING & RETURNS
+            </h6>
+            <img
+              v-if="isShippingInfoOpen"
+              src="../assets/images/minus.svg"
+              alt=""
+            />
+            <img v-else src="../assets/images/plus.svg" alt="" />
+          </div>
+          <div
+            v-if="isShippingInfoOpen"
+            class="product-accordion__info-wrapper"
+          >
+            <p class="product-accordion__title uppercase">SHIPPING INFO</p>
+            <p class="product-accordion__title">Order delivery time:</p>
+            <p class="product-accordion__description margin-bottom-14">
+              All orders are shipped priority/first class & delivered 5-7
+              business days from the day you place the order.
+            </p>
+            <p class="product-accordion__title">
+              Free shipping on orders over $75.
+            </p>
+            <p class="product-accordion__title">Shipping fee:</p>
+            <p class="product-accordion__description">Up to $10 = $3.75</p>
+            <p class="product-accordion__description">
+              $10.01 - $30.00 = $4.75
+            </p>
+            <p class="product-accordion__description">
+              $30.01 - $75.00 = $5.75
+            </p>
+            <p class="product-accordion__description margin-bottom-14">
+              $75.01 & over = free shipping
+            </p>
+            <p class="product-accordion__description"></p>
+            <p class="product-accordion__title uppercase">RETURNS INFO</p>
+            <p class="product-accordion__title">Free returns.</p>
+            <p class="product-accordion__description">
+              We will accept all authorized returns
+            </p>
+            <p class="product-accordion__description">
+              All returns are accepted as long as the request is made to return
+              the item within 30 days of receiving the merchandise.
+            </p>
+            <p class="product-accordion__description">
+              Once approved we will generate the FREE UPS prepaid label, we will
+              email you with the label attached. Just print the label, attach it
+              to any box/package and return the items.
+            </p>
+            <p class="product-accordion__description">
+              You will have 30 days to send the item back for full refund once
+              you receive the free return label.
+            </p>
+            <p class="product-accordion__description">
+              Once we receive the items back we will process the return and
+              refund the balance back to your account.
+            </p>
+            <p class="product-accordion__description">
+              Please note free return labels are available for items being
+              shipped within 48 continental states only.
+            </p>
+            <p class="product-accordion__description">
+              Please contact us here ovroefashion@gmail.com to receive an RMA#
+              for your return.
+            </p>
+            <p class="product-accordion__description">
+              Please include your Order#, items returning, and the reason for
+              the return.
+            </p>
+          </div>
+        </div>
+
+        <div class="product-accordion__item"></div>
       </div>
       <button>share</button>
     </div>
@@ -74,6 +153,21 @@ import { useProductStore } from "../store/productStore";
 export default {
   name: "MyProduct",
 
+  // props: {
+  //   productProp: {
+  //     type: Object,
+  //   },
+  // },
+
+  data() {
+    return {
+      // product: null,
+      isDetailsOpen: false,
+      isSizeInfoOpen: false,
+      isShippingInfoOpen: false,
+    };
+  },
+
   setup() {
     const productStore = useProductStore();
     return {
@@ -81,14 +175,22 @@ export default {
     };
   },
 
-  props: {
-    productProp: {
-      type: Object,
+  methods: {
+    toggleDetails() {
+      this.isDetailsOpen = !this.isDetailsOpen;
+    },
+    toggleSizeInfo() {
+      this.isSizeInfoOpen = !this.isSizeInfoOpen;
+    },
+    toggleShippingInfo() {
+      this.isShippingInfoOpen = !this.isShippingInfoOpen;
     },
   },
 
-  data() {
-    return {};
+  computed: {
+    product() {
+      return this.productStore.products[this.$route.params.id - 1];
+    },
   },
 };
 </script>
@@ -98,8 +200,15 @@ export default {
 .product {
   margin-bottom: 191px;
   width: 100%;
+}
 
-  outline: 1px red solid;
+.product__img {
+  max-height: 705px;
+  min-width: 470px;
+}
+
+.product__btn {
+  margin: 25px 0;
 }
 
 .product__info {
@@ -132,12 +241,55 @@ export default {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
-  padding: 21px 0;
+  padding: 20px 0;
   border-top: 1px solid #bdbdbd;
 }
 
-.product-colors__title {
+.product__accordion {
+  display: flex;
+  flex-direction: column;
 }
+
+.product-accordion__item {
+  padding: 20px 0;
+
+  border-top: 1px solid #bdbdbd;
+
+  &:last-child {
+    margin-bottom: 1px solid #bdbdbd;
+  }
+}
+
+.product-accordion__title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  cursor: pointer;
+}
+
+.product-accordion__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: $main-font-color;
+}
+
+// .product-accordion__info-wrapper {
+// }
+
+.product-accordion__description {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 140%;
+  color: $main-font-color;
+}
+
+// .product-colors__title {
+// }
 
 .product-sizes__title {
   grid-column-start: span 1;
@@ -152,5 +304,13 @@ export default {
   &:not(:last-child) {
     margin-right: 10px;
   }
+}
+
+.margin-bottom-14 {
+  margin-bottom: 14px;
+}
+
+.margin-0 {
+  margin: 0;
 }
 </style>

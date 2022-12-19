@@ -2,18 +2,17 @@
   <MySpecialOffer />
   <div class="container">
     <MyHeader />
-    <MyCatalog />
+    <RouterView />
   </div>
 </template>
 
 <script>
-import MyCatalog from "./components/MyCatalog.vue";
 import MyHeader from "./components/MyHeader.vue";
 import MySpecialOffer from "./components/MySpecialOffer.vue";
 
 export default {
   name: "App",
-  components: { MySpecialOffer, MyHeader, MyCatalog },
+  components: { MyHeader, MySpecialOffer },
 };
 </script>
 

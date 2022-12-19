@@ -24,10 +24,6 @@
         </button>
       </li>
     </ul>
-    <MyProductPage
-      v-if="Object.keys(currentProduct).length > 0"
-      v-bind:productProp="currentProduct"
-    />
     <div class="catalog__products flex">
       <MyColorFilter
         v-if="this.productStore.filters.color.isFilterVisible"
@@ -48,9 +44,13 @@
         v-on:closeCategoryFilter="closeAllFilters()"
       />
       <div
+        to="{name: 'productPage', params:{ productProp: currentProduct}}"
         v-for="(item, index) in fullyFilteredProducts"
         :key="index"
-        @click="setCurrentProduct(index)"
+        @click="
+          $router.push(`/product/${item.id}`);
+          setCurrentProduct(index);
+        "
         class="catalog__product catalog-product"
       >
         <img :src="item.image" alt="" />
@@ -66,7 +66,6 @@
 
 <script>
 import { useProductStore } from "@/store/productStore";
-import MyProductPage from "./MyProductPage.vue";
 import MyColorFilter from "./MyColorFilter.vue";
 import MySizeFilter from "./MySizeFilter.vue";
 import MyCategoryFilter from "./MyCategoryFilter.vue";
@@ -77,7 +76,6 @@ export default {
     MyColorFilter,
     MySizeFilter,
     MyCategoryFilter,
-    MyProductPage,
   },
 
   setup() {
@@ -110,6 +108,7 @@ export default {
       this.currentProduct = {};
 
       this.currentProduct = this.fullyFilteredProducts[index];
+      this.productStore.currentId = this.currentProduct.id;
     },
     updateFilteredProducts() {
       this.filteredProducts = [];
