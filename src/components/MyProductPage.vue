@@ -7,7 +7,38 @@
       <div class="product__options">
         <div class="product__colors product-colors product__option">
           <span class="product-colors__title uppercase">COLOR:</span>
-          <button class="product-colors__btn"></button>
+          <div
+            v-if="!isColorSelectionVisible"
+            @click="toggleColorsSelection()"
+            class="product-colors__btn"
+          >
+            <img
+              class="product-colors__img"
+              :src="currentColor.imageUrl"
+              alt=""
+            />
+            <p class="product-colors__text">{{ currentColor.name }}</p>
+            <!-- <span>{{ currentColor.name }}</span> -->
+            <img
+              class="product__arrow"
+              src="../assets/images/arrow.svg"
+              alt=""
+            />
+          </div>
+          <ul v-if="isColorSelectionVisible" class="product-colors__list">
+            <li
+              v-for="(color, index) in colors"
+              :key="index"
+              @click="
+                setCurrentColor(index);
+                toggleColorsSelection();
+              "
+              class="product-colors__item"
+            >
+              <img class="product-colors__img" :src="color.imageUrl" alt="" />
+              <p class="product-colors__text">{{ color.name }}</p>
+            </li>
+          </ul>
         </div>
         <div class="product__sizes product__option">
           <span class="product-sizes__title uppercase">SIZE:</span>
@@ -152,21 +183,24 @@ export default {
 
   data() {
     return {
-      // product: null,
+      product: this.productStore.products[this.$route.params.id - 1],
+      colors: [],
+      currentColor: {},
+      isColorSelectionVisible: false,
       isDetailsOpen: false,
       isSizeInfoOpen: false,
       isShippingInfoOpen: false,
     };
   },
 
-  setup() {
-    const productStore = useProductStore();
-    return {
-      productStore,
-    };
-  },
-
   methods: {
+    toggleColorsSelection() {
+      this.isColorSelectionVisible = !this.isColorSelectionVisible;
+    },
+    setCurrentColor(index) {
+      this.currentColor = this.colors[index];
+    },
+
     toggleDetails() {
       this.isDetailsOpen = !this.isDetailsOpen;
     },
@@ -178,10 +212,29 @@ export default {
     },
   },
 
-  computed: {
-    product() {
-      return this.productStore.products[this.$route.params.id - 1];
-    },
+  // computed: {
+  //   product() {
+  //     return this.productStore.products[this.$route.params.id - 1];
+  //   },
+  // },
+
+  setup() {
+    const productStore = useProductStore();
+    return {
+      productStore,
+    };
+  },
+
+  mounted() {
+    for (let color of this.product.availableColors) {
+      for (let elem of this.productStore.filters.color.options) {
+        if (elem.key === color) {
+          this.colors.push(elem);
+        }
+      }
+    }
+
+    this.currentColor = this.colors[0];
   },
 };
 </script>
@@ -259,6 +312,48 @@ export default {
   }
 }
 
+// .product__colors {
+// }
+
+.product-colors__btn {
+  display: flex;
+  align-items: center;
+
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}
+
+.product-colors__list {
+  display: flex;
+  flex-direction: column;
+
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.product-colors__item {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}
+.product-colors__img {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+// .product-colors__text {
+// }
+
 .product__accordion {
   display: flex;
   flex-direction: column;
@@ -303,6 +398,10 @@ export default {
   font-size: 18px;
   line-height: 140%;
   color: $main-font-color;
+}
+
+.product__arrow {
+  margin-left: auto;
 }
 
 .margin-bottom-14 {
