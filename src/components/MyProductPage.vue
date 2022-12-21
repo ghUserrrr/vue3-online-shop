@@ -210,6 +210,12 @@ export default {
       this.currentSize = this.product.availableSizes[index];
     },
 
+    addToCart() {
+      this.product.size = this.currentSize;
+      this.product.color = this.currentColor;
+      this.productStore.cart.push(this.product);
+    },
+
     toggleDetails() {
       this.isDetailsOpen = !this.isDetailsOpen;
     },
@@ -220,12 +226,6 @@ export default {
       this.isShippingInfoOpen = !this.isShippingInfoOpen;
     },
   },
-
-  // computed: {
-  //   product() {
-  //     return this.productStore.products[this.$route.params.id - 1];
-  //   },
-  // },
 
   setup() {
     const productStore = useProductStore();
@@ -329,9 +329,6 @@ export default {
   background-color: #000000;
 }
 
-// .product__colors {
-// }
-
 .product-colors__btn {
   display: flex;
   align-items: center;
@@ -368,8 +365,6 @@ export default {
   height: 15px;
   margin-right: 10px;
 }
-// .product-colors__text {
-// }
 
 .product__accordion {
   display: flex;
