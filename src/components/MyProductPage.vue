@@ -46,6 +46,10 @@
             <button
               v-for="(size, index) in product.availableSizes"
               :key="index"
+              @click="setCurrentSize(index)"
+              :class="{
+                'product-sizes__btn_active': size === this.currentSize,
+              }"
               class="product-sizes__btn"
             >
               {{ size }}
@@ -186,6 +190,7 @@ export default {
       product: this.productStore.products[this.$route.params.id - 1],
       colors: [],
       currentColor: {},
+      currentSize: {},
       isColorSelectionVisible: false,
       isDetailsOpen: false,
       isSizeInfoOpen: false,
@@ -199,6 +204,10 @@ export default {
     },
     setCurrentColor(index) {
       this.currentColor = this.colors[index];
+    },
+
+    setCurrentSize(index) {
+      this.currentSize = this.product.availableSizes[index];
     },
 
     toggleDetails() {
@@ -235,6 +244,7 @@ export default {
     }
 
     this.currentColor = this.colors[0];
+    this.currentSize = this.product.availableSizes[0];
   },
 };
 </script>
@@ -307,9 +317,16 @@ export default {
   }
 
   &:hover {
-    background-color: #000000;
     color: #fff;
+
+    background-color: #636363;
   }
+}
+
+.product-sizes__btn_active {
+  color: #fff;
+
+  background-color: #000000;
 }
 
 // .product__colors {
@@ -357,6 +374,7 @@ export default {
 .product__accordion {
   display: flex;
   flex-direction: column;
+  margin-bottom: 22px;
   width: 495px;
 }
 
