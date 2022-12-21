@@ -57,7 +57,12 @@
           </div>
         </div>
       </div>
-      <button class="product__btn btn btn-primary uppercase">ADD TO BAG</button>
+      <button
+        @click="addToCart()"
+        class="product__btn btn btn-primary uppercase"
+      >
+        ADD TO BAG
+      </button>
       <div class="product__accordion product-accordion">
         <div @click="toggleDetails" class="product-accordion__item">
           <div
