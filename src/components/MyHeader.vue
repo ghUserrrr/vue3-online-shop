@@ -7,15 +7,6 @@
       <li class="header__item header-nav__item">
         <a class="header-nav__link" href="#">APPAREL</a>
       </li>
-      <li class="header__item header-nav__item">
-        <a class="header-nav__link" href="#">PLUS SIZE</a>
-      </li>
-      <li class="header__item header-nav__item">
-        <a class="header-nav__link" href="#">ACCESSORIOES</a>
-      </li>
-      <li class="header__item header-nav__item">
-        <a class="header-nav__link" href="#">RESTOCKED</a>
-      </li>
     </ul>
     <a class="header__logo-link" href="/">
       <img class="header__logo" src="../assets/images/logo.png" alt="" />
@@ -27,14 +18,14 @@
       <li class="header-nav__item">
         <a class="header-nav__link" href="#">SIGN IN</a>
       </li>
-      <li class="header-nav__item">
+      <li @click="toggleCart" class="header-nav__item">
         <a class="header-nav__link" href="#"
           >CART {{ this.productStore.itemsInCart }}</a
         >
       </li>
     </ul>
   </header>
-  <MyCart />
+  <MyCart v-if="isCartOpen" v-on:closeCart="closeCart()" />
 </template>
 
 <script>
@@ -45,11 +36,26 @@ export default {
   name: "MyHeaderVue",
   components: { MyCart },
 
+  data() {
+    return {
+      isCartOpen: false,
+    };
+  },
+
   setup() {
     const productStore = useProductStore();
     return {
       productStore,
     };
+  },
+
+  methods: {
+    toggleCart() {
+      this.isCartOpen = !this.isCartOpen;
+    },
+    closeCart() {
+      this.isCartOpen = false;
+    },
   },
 };
 </script>
@@ -64,8 +70,8 @@ export default {
   height: 87px;
 }
 
-.header__nav {
-}
+// .header__nav {
+// }
 
 .header-nav__item {
   &:not(:last-child) {
@@ -85,8 +91,8 @@ export default {
   color: $main-font-color;
 }
 
-.header__logo {
-}
+// .header__logo {
+// }
 
 .header__logo-link {
   position: absolute;

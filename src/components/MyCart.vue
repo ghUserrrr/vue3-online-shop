@@ -1,44 +1,48 @@
 <template>
-  <div class="cart">
-    <div class="cart__header">
-      <h3 class="cart__title">
-        YOUR CART ({{ this.productStore.itemsInCart }})
-      </h3>
-      <img class="cross" src="" alt="" />
+  <div class="background">
+    <div v-click-outside="closeCart" class="cart">
+      <div class="cart__header">
+        <h3 class="cart__title">
+          YOUR CART ({{ this.productStore.itemsInCart }})
+        </h3>
+        <img class="cross" src="" alt="" />
+      </div>
+      <ul class="cart__list">
+        <li
+          v-for="(product, index) in productStore.cart"
+          :key="index"
+          class="cart__item"
+        >
+          <img class="cart__img" :src="product.image" alt="" />
+          <div class="cart__info">
+            <div class="cart__header">
+              <h2 class="cart__product-title">{{ product.title }}</h2>
+              <p class="cart__price cart__product-title">
+                ${{ product.price }}
+              </p>
+            </div>
+            <div class="cart__description cart-description">
+              <p class="cart-description__title">COLOR:</p>
+              <div class="cart-description__wrapper">
+                <img
+                  class="cart-description__img"
+                  :src="product.color.imageUrl"
+                  alt=""
+                />
+                <p class="cart-description__text">{{ product.color.name }}</p>
+              </div>
+            </div>
+            <div class="cart__description cart-description">
+              <p class="cart-description__title">SIZE:</p>
+              <div class="cart-description__wrapper">
+                <p class="cart-description__text">{{ product.size }}</p>
+              </div>
+            </div>
+            <button class="cart-item__btn btn-small">remove</button>
+          </div>
+        </li>
+      </ul>
     </div>
-    <ul class="cart__list">
-      <li
-        v-for="(product, index) in productStore.cart"
-        :key="index"
-        class="cart__item"
-      >
-        <img class="cart__img" :src="product.image" alt="" />
-        <div class="cart__info">
-          <div class="cart__header">
-            <h2 class="cart__product-title">{{ product.title }}</h2>
-            <p class="cart__price cart__product-title">${{ product.price }}</p>
-          </div>
-          <div class="cart__description cart-description">
-            <p class="cart-description__title">COLOR:</p>
-            <div class="cart-description__wrapper">
-              <img
-                class="cart-description__img"
-                :src="product.color.imageUrl"
-                alt=""
-              />
-              <p class="cart-description__text">{{ product.color.name }}</p>
-            </div>
-          </div>
-          <div class="cart__description cart-description">
-            <p class="cart-description__title">SIZE:</p>
-            <div class="cart-description__wrapper">
-              <p class="cart-description__text">{{ product.size }}</p>
-            </div>
-          </div>
-          <button class="cart-item__btn btn-small">remove</button>
-        </div>
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -52,6 +56,12 @@ export default {
       productStore,
     };
   },
+
+  methods: {
+    closeCart() {
+      this.$emit("closeCart");
+    },
+  },
 };
 </script>
 
@@ -59,9 +69,11 @@ export default {
 @import "../assets/scss/vars";
 
 .cart {
+  z-index: 3;
   position: absolute;
   top: 0;
   right: 0;
+  bottom: 0;
 
   display: flex;
   padding: 40px 70px;
