@@ -180,7 +180,7 @@
           </div>
         </div>
       </div>
-      <button>share</button>
+      <button class="btn-small">share</button>
     </div>
   </section>
 </template>
@@ -216,9 +216,10 @@ export default {
     },
 
     addToCart() {
-      this.product.size = this.currentSize;
       this.product.color = this.currentColor;
-      this.productStore.cart.push(this.product);
+      this.product.size = this.currentSize;
+
+      this.productStore.cart.push({ ...this.product });
     },
 
     toggleDetails() {

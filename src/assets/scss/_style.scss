@@ -51,6 +51,22 @@ body {
   cursor: pointer;
 }
 
+.btn-small {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration-line: underline;
+  text-transform: lowercase;
+  color: $main-font-color;
+
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .btn-primary {
   padding-top: 16px;
   padding-bottom: 16px;

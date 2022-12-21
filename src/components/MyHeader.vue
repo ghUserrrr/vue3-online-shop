@@ -28,15 +28,29 @@
         <a class="header-nav__link" href="#">SIGN IN</a>
       </li>
       <li class="header-nav__item">
-        <a class="header-nav__link" href="#">CART 0</a>
+        <a class="header-nav__link" href="#"
+          >CART {{ this.productStore.itemsInCart }}</a
+        >
       </li>
     </ul>
   </header>
+  <MyCart />
 </template>
 
 <script>
+import MyCart from "./MyCart.vue";
+import { useProductStore } from "@/store/productStore";
+
 export default {
   name: "MyHeaderVue",
+  components: { MyCart },
+
+  setup() {
+    const productStore = useProductStore();
+    return {
+      productStore,
+    };
+  },
 };
 </script>
 
