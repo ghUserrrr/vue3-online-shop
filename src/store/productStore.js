@@ -282,5 +282,12 @@ export const useProductStore = defineStore("product", {
       //   return sum;
       return this.cart.length;
     },
+    subTotalPrice() {
+      const sum = this.cart.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.price,
+        0
+      );
+      return sum;
+    },
   },
 });

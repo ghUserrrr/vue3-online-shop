@@ -42,6 +42,16 @@
           </div>
         </li>
       </ul>
+      <div class="cart__subtotal">
+        <p>Subtotal</p>
+        <p class="cart__product-title">
+          ${{ this.productStore.subTotalPrice }}
+        </p>
+      </div>
+      <p class="cart__description">
+        Shipping, taxes, and discounts will be calculated at checkout
+      </p>
+      <button class="btn btn-primary">Checkout</button>
     </div>
   </div>
 </template>
@@ -111,6 +121,7 @@ export default {
 .cart__list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 12px;
   width: 100%;
 }
 .cart__item {
@@ -169,5 +180,21 @@ export default {
 .cart-item__btn {
   margin-top: auto;
   margin-right: auto;
+}
+
+.cart__subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+}
+.cart__description {
+  margin-bottom: 12px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #636363;
 }
 </style>
