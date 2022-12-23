@@ -12,20 +12,17 @@
       >
       <button class="small-btn ml-auto">change</button>
     </div>
-    <h5 class="checkout__title">Shipping method</h5>
-    <div class="method">
-      <input class="method__radio" id="method-economy" type="radio" />
-      <label class="method__label" for="method-economy">Economy</label>
-      <p class="ml-auto">$4.75</p>
-    </div>
+    <MyShippingMethod />
   </div>
 </template>
 
 <script>
 import { useProductStore } from "@/store/productStore";
+import MyShippingMethod from "@/components/shipping/MyShippingMethod.vue";
 
 export default {
   name: "MyShipping",
+  components: { MyShippingMethod },
   setup() {
     const productStore = useProductStore();
     return {

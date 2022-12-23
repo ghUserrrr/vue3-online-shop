@@ -1,10 +1,11 @@
 <template>
-  <MyInfo />
+  <RouterView />
+  <!-- <MyCart /> -->
 </template>
 
 <script>
 import { useProductStore } from "@/store/productStore";
-import MyInfo from "./MyInfo.vue";
+// import MyCart from "./MyCart.vue";
 
 export default {
   name: "MyCheckout",
@@ -14,7 +15,7 @@ export default {
       productStore,
     };
   },
-  components: { MyInfo },
+  //   components: { MyCart },
 };
 </script>
 
