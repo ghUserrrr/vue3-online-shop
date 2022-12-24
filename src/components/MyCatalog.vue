@@ -2,23 +2,23 @@
   <div class="catalog">
     <ul class="catalog__filters catalog-filters flex">
       <li
-        v-for="(item, index) in productStore.filters"
-        :key="index"
-        @click="
+          v-for="(item, index) in productStore.filters"
+          :key="index"
+          @click="
           closeAllFilters();
           openFilter(index);
         "
-        class="catalog-filters__item"
+          class="catalog-filters__item"
       >
         <button class="catalog-filters__btn filters-btn product-font flex">
           {{ item.name }}
           <span>{{ filtersCounter }}</span>
 
           <span
-            :class="[
+              :class="[
               item.isFilterVisible ? 'filters-btn__minus' : 'filters-btn__plus',
             ]"
-            class="filters-btn__icon"
+              class="filters-btn__icon"
           >
           </span>
         </button>
@@ -26,38 +26,38 @@
     </ul>
     <div class="catalog__products flex">
       <MyColorFilter
-        v-if="this.productStore.filters.color.isFilterVisible"
-        v-bind:productsProp="products"
-        v-on:updateProductsByColor="updateProductsByColor"
-        v-on:closeColorFilter="closeAllFilters()"
+          v-if="this.productStore.filters.color.isFilterVisible"
+          v-bind:productsProp="products"
+          v-on:updateProductsByColor="updateProductsByColor"
+          v-on:closeColorFilter="closeAllFilters()"
       />
       <MySizeFilter
-        v-if="this.productStore.filters.size.isFilterVisible"
-        v-bind:productsProp="products"
-        v-on:updateProductsBySize="updateProductsBySize"
-        v-on:closeSizeFilter="closeAllFilters()"
+          v-if="this.productStore.filters.size.isFilterVisible"
+          v-bind:productsProp="products"
+          v-on:updateProductsBySize="updateProductsBySize"
+          v-on:closeSizeFilter="closeAllFilters()"
       />
       <MyCategoryFilter
-        v-if="this.productStore.filters.category.isFilterVisible"
-        v-bind:productsProp="products"
-        v-on:updateProductsByCategory="updateProductsByCategory"
-        v-on:closeCategoryFilter="closeAllFilters()"
+          v-if="this.productStore.filters.category.isFilterVisible"
+          v-bind:productsProp="products"
+          v-on:updateProductsByCategory="updateProductsByCategory"
+          v-on:closeCategoryFilter="closeAllFilters()"
       />
       <div
-        to="{name: 'productPage', params:{ productProp: currentProduct}}"
-        v-for="(item, index) in fullyFilteredProducts"
-        :key="index"
-        @click="
+          to="{name: 'productPage', params:{ productProp: currentProduct}}"
+          v-for="(item, index) in fullyFilteredProducts"
+          :key="index"
+          @click="
           $router.push(`/product/${item.id}`);
           setCurrentProduct(index);
         "
-        class="catalog__product catalog-product"
+          class="catalog__product catalog-product"
       >
-        <img :src="item.image" alt="" />
-        <h4 class="catalog-product__title product-font">
+        <img :src="item.image" alt=""/>
+        <h4 class="catalog-product__title main-font">
           {{ item.title }}
         </h4>
-        <p class="catalog-product__price product-font">$ {{ item.price }}</p>
+        <p class="catalog-product__price main-font">$ {{ item.price }}</p>
         <div class="catalog-product__colors"></div>
       </div>
     </div>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { useProductStore } from "@/store/productStore";
+import {useProductStore} from "@/store/productStore";
 import MyColorFilter from "./MyColorFilter.vue";
 import MySizeFilter from "./MySizeFilter.vue";
 import MyCategoryFilter from "./MyCategoryFilter.vue";

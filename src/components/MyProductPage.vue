@@ -1,6 +1,6 @@
 <template>
   <section class="product flex">
-    <img class="product__img" :src="product.image" alt="product image" />
+    <img class="product__img" :src="product.image" alt="product image"/>
     <div class="product__info flex">
       <h4 class="product__title">{{ product.title }}</h4>
       <span class="product__price">${{ product.price }}</span>
@@ -8,34 +8,34 @@
         <div class="product__colors product-colors product__option">
           <span class="product-colors__title uppercase">COLOR:</span>
           <div
-            v-if="!isColorSelectionVisible"
-            @click="toggleColorsSelection()"
-            class="product-colors__btn"
+              v-if="!isColorSelectionVisible"
+              @click="toggleColorsSelection()"
+              class="product-colors__btn"
           >
             <img
-              class="product-colors__img"
-              :src="currentColor.imageUrl"
-              alt=""
+                class="product-colors__img"
+                :src="currentColor.imageUrl"
+                alt=""
             />
             <p class="product-colors__text">{{ currentColor.name }}</p>
             <!-- <span>{{ currentColor.name }}</span> -->
             <img
-              class="product__arrow"
-              src="../assets/images/arrow.svg"
-              alt=""
+                class="product__arrow"
+                src="../assets/images/arrow.svg"
+                alt=""
             />
           </div>
           <ul v-if="isColorSelectionVisible" class="product-colors__list">
             <li
-              v-for="(color, index) in colors"
-              :key="index"
-              @click="
+                v-for="(color, index) in colors"
+                :key="index"
+                @click="
                 setCurrentColor(index);
                 toggleColorsSelection();
               "
-              class="product-colors__item"
+                class="product-colors__item"
             >
-              <img class="product-colors__img" :src="color.imageUrl" alt="" />
+              <img class="product-colors__img" :src="color.imageUrl" alt=""/>
               <p class="product-colors__text">{{ color.name }}</p>
             </li>
           </ul>
@@ -44,13 +44,13 @@
           <span class="product-sizes__title uppercase">SIZE:</span>
           <div class="prosuct-size__buttons">
             <button
-              v-for="(size, index) in product.availableSizes"
-              :key="index"
-              @click="setCurrentSize(index)"
-              :class="{
+                v-for="(size, index) in product.availableSizes"
+                :key="index"
+                @click="setCurrentSize(index)"
+                :class="{
                 'product-sizes__btn_active': size === this.currentSize,
               }"
-              class="product-sizes__btn"
+                class="product-sizes__btn"
             >
               {{ size }}
             </button>
@@ -58,20 +58,20 @@
         </div>
       </div>
       <button
-        @click="addToCart()"
-        class="product__btn btn btn-primary uppercase"
+          @click="addToCart()"
+          class="product__btn btn btn-primary uppercase"
       >
         ADD TO BAG
       </button>
       <div class="product__accordion product-accordion">
         <div @click="toggleDetails" class="product-accordion__item">
           <div
-            :class="{ 'margin-0': !isDetailsOpen }"
-            class="product-accordion__title-wrapper"
+              :class="{ 'margin-0': !isDetailsOpen }"
+              class="product-accordion__title-wrapper"
           >
             <h6 class="product-accordion__title uppercase">DATAILS</h6>
-            <img v-if="isDetailsOpen" src="../assets/images/minus.svg" alt="" />
-            <img v-else src="../assets/images/plus.svg" alt="" />
+            <img v-if="isDetailsOpen" src="../assets/images/minus.svg" alt=""/>
+            <img v-else src="../assets/images/plus.svg" alt=""/>
           </div>
           <div v-if="isDetailsOpen" class="product-accordion__info-wrapper">
             <p class="product-accordion__description">
@@ -81,16 +81,16 @@
         </div>
         <div @click="toggleSizeInfo" class="product-accordion__item">
           <div
-            :class="{ 'margin-0': !isSizeInfoOpen }"
-            class="product-accordion__title-wrapper"
+              :class="{ 'margin-0': !isSizeInfoOpen }"
+              class="product-accordion__title-wrapper"
           >
             <h6 class="product-accordion__title uppercase">SIZE & FIT</h6>
             <img
-              v-if="isSizeInfoOpen"
-              src="../assets/images/minus.svg"
-              alt=""
+                v-if="isSizeInfoOpen"
+                src="../assets/images/minus.svg"
+                alt=""
             />
-            <img v-else src="../assets/images/plus.svg" alt="" />
+            <img v-else src="../assets/images/plus.svg" alt=""/>
           </div>
           <div v-if="isSizeInfoOpen" class="product-accordion__info-wrapper">
             <p class="product-accordion__description">
@@ -105,22 +105,22 @@
 
         <div @click="toggleShippingInfo" class="product-accordion__item">
           <div
-            :class="{ 'margin-0': !isShippingInfoOpen }"
-            class="product-accordion__title-wrapper"
+              :class="{ 'margin-0': !isShippingInfoOpen }"
+              class="product-accordion__title-wrapper"
           >
             <h6 class="product-accordion__title uppercase">
               SHIPPING & RETURNS
             </h6>
             <img
-              v-if="isShippingInfoOpen"
-              src="../assets/images/minus.svg"
-              alt=""
+                v-if="isShippingInfoOpen"
+                src="../assets/images/minus.svg"
+                alt=""
             />
-            <img v-else src="../assets/images/plus.svg" alt="" />
+            <img v-else src="../assets/images/plus.svg" alt=""/>
           </div>
           <div
-            v-if="isShippingInfoOpen"
-            class="product-accordion__info-wrapper"
+              v-if="isShippingInfoOpen"
+              class="product-accordion__info-wrapper"
           >
             <p class="product-accordion__title uppercase">SHIPPING INFO</p>
             <p class="product-accordion__title">Order delivery time:</p>
@@ -185,7 +185,7 @@
   </section>
 </template>
 <script>
-import { useProductStore } from "../store/productStore";
+import {useProductStore} from "../store/productStore";
 
 export default {
   name: "MyProduct",
@@ -219,7 +219,7 @@ export default {
       this.product.color = this.currentColor;
       this.product.size = this.currentSize;
 
-      this.productStore.cart.push({ ...this.product });
+      this.productStore.cart.push({...this.product});
     },
 
     toggleDetails() {
@@ -303,10 +303,12 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   padding: 20px 0;
   border-top: 1px solid #bdbdbd;
+
   &:last-child {
     border-bottom: 1px solid #bdbdbd;
   }
 }
+
 .product-sizes__title {
   grid-column-start: span 1;
 }
@@ -354,6 +356,7 @@ export default {
   transition: background 0.3s ease;
   cursor: pointer;
 }
+
 .product-colors__item {
   display: flex;
   align-items: center;
@@ -366,6 +369,7 @@ export default {
     background-color: #f3f3f3;
   }
 }
+
 .product-colors__img {
   width: 15px;
   height: 15px;

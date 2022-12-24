@@ -101,7 +101,7 @@ body {
 // .btn-empty-inside {
 // }
 
-.product-font {
+.main-font {
   font-family: "work-sans";
   font-style: normal;
   font-weight: 400;
@@ -118,16 +118,16 @@ body {
   color: $main-font-color;
 }
 
-.info__container {
+.checkout__container {
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
   width: 720px;
 
-  border-bottom: 1px solid #bdbdbd;
+  //border-bottom: 1px solid #bdbdbd;
 }
 
-.info__payments {
+.checkout__payments {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,11 +135,11 @@ body {
   margin-bottom: 25px;
 }
 
-.info__title {
+.checkout__title {
   overflow: hidden;
   text-align: center;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   line-height: 140%;
 
@@ -175,25 +175,35 @@ body {
     right: -14px;
   }
 }
-.info__form {
+
+.checkout__form {
   display: flex;
   flex-direction: column;
 }
 
-.info-form__item {
+.checkout-form__item {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
 }
 
-.info__input {
+.checkout-form__title {
+  margin-bottom: 19px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-font-color;
+}
+
+.checkout__input {
   padding: 15px 14px;
   margin-bottom: 15px;
 
   border: 1px solid #636363;
 }
 
-.info__checkbox {
+.checkout__checkbox {
   margin-right: 5px;
 }
 
@@ -205,20 +215,7 @@ body {
 
   color: #636363;
 }
-.info-form__personal {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
 
-.info-form__destination {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.info__buttons {
-  margin-bottom: 50px;
-}
-
-.info__btn {
+.checkout__btn {
   padding: 16px 153px;
 }

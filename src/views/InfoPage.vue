@@ -1,36 +1,36 @@
 <template>
   <div class="info">
-    <div class="info__container">
-      <h4 class="info__title">
+    <div class="checkout__container">
+      <h4 class="checkout__title">
         <span>Express checkout</span>
       </h4>
-      <div class="info__payments info-payments">
+      <div class="checkout__payments checkout-payments">
         <img
-          class="info-payments__img"
-          src="../assets/images/shopify.jpg"
-          alt=""
+            class="checkout-payments__img"
+            src="../assets/images/shopify.jpg"
+            alt=""
         />
         <img
-          class="info-payments__img"
-          src="../assets/images/paypal.jpg"
-          alt=""
+            class="checkout-payments__img"
+            src="../assets/images/paypal.jpg"
+            alt=""
         />
         <img
-          class="info-payments__img"
-          src="../assets/images/googlepay.jpg"
-          alt=""
+            class="checkout-payments__img"
+            src="../assets/images/googlepay.jpg"
+            alt=""
         />
       </div>
     </div>
-    <div class="info__container">
-      <h4 class="info__title">
+    <div class="checkout__container">
+      <h4 class="checkout__title">
         <span>or</span>
       </h4>
-      <form class="info__form info-form" action="">
-        <MyContactInfo />
-        <MyShippingAddress />
-        <div class="row space-between info__buttons">
-          <button class="info__btn btn-primary">Continue to shipping</button>
+      <form class="checkout__form checkout-form" action="">
+        <MyContactInfo/>
+        <MyShippingAddress/>
+        <div class="row space-between checkout__buttons">
+          <button class="checkout__btn btn-primary">Continue to shipping</button>
           <button class="btn-small">return to cart</button>
         </div>
       </form>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { useProductStore } from "@/store/productStore";
+import {useProductStore} from "@/store/productStore";
 import MyContactInfo from "../components/info/MyContactInfo.vue";
 import MyShippingAddress from "../components/info/MyShippingAddress.vue";
 
@@ -51,10 +51,14 @@ export default {
       productStore,
     };
   },
-  components: { MyShippingAddress, MyContactInfo },
+  components: {MyShippingAddress, MyContactInfo},
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/scss/vars";
+
+.checkout__buttons {
+  margin-bottom: 50px;
+}
 </style>

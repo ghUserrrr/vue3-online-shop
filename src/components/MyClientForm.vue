@@ -1,0 +1,65 @@
+<template>
+  <div class="client-info">
+    <div class="client-info__item grid">
+      <span class="client-info__title grey-txt">Contact</span>
+      <span class="client-info__value">maccartny@gmail.com</span>
+      <button class="client-info__btn small-btn ml-auto">change</button>
+    </div>
+    <div class="client-info__item grid">
+      <span class="client-info__title grey-txt">Ship to</span>
+      <span class="client-info__value"
+      >9550 S Eastern Ave ste 253-A102 Las Vegas NV 89123</span
+      >
+      <button class="client-info__btn small-btn ml-auto">change</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import {useProductStore} from "@/store/productStore";
+
+export default {
+  name: "MyClientPage",
+  setup() {
+    const productStore = useProductStore();
+    return {
+      productStore,
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.client-info {
+  padding: 15px;
+
+  border: 1px solid #bdbdbd;
+}
+
+.client-info__item {
+  grid-template-columns: repeat(6, 1fr);
+
+  &:not(:first-child) {
+    padding-top: 15px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #bdbdbd;
+    padding-bottom: 15px;
+  }
+
+}
+
+.client-info__title {
+  grid-column-start: span 1;
+}
+
+.client-info__value {
+  grid-column-start: span 4;
+}
+
+.client-info__btn {
+  grid-column-start: 6;
+}
+
+</style>

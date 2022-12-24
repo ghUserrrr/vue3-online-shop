@@ -5,15 +5,15 @@
         <h3 class="cart__title">
           YOUR CART ({{ this.productStore.itemsInCart }})
         </h3>
-        <img class="cross" src="" alt="" />
+        <img class="cross" src="" alt=""/>
       </div>
       <ul class="cart__list">
         <li
-          v-for="(product, index) in productStore.cart"
-          :key="index"
-          class="cart__item"
+            v-for="(product, index) in productStore.cart"
+            :key="index"
+            class="cart__item"
         >
-          <img class="cart__img" :src="product.image" alt="" />
+          <img class="cart__img" :src="product.image" alt=""/>
           <div class="cart__info">
             <div class="cart__header">
               <h2 class="cart__product-title">{{ product.title }}</h2>
@@ -25,9 +25,9 @@
               <p class="cart-description__title">COLOR:</p>
               <div class="cart-description__wrapper">
                 <img
-                  class="cart-description__img"
-                  :src="product.color.imageUrl"
-                  alt=""
+                    class="cart-description__img"
+                    :src="product.color.imageUrl"
+                    alt=""
                 />
                 <p class="cart-description__text">{{ product.color.name }}</p>
               </div>
@@ -57,7 +57,8 @@
 </template>
 
 <script>
-import { useProductStore } from "@/store/productStore";
+import {useProductStore} from "@/store/productStore";
+
 export default {
   name: "MyCart",
   setup() {
@@ -116,6 +117,7 @@ export default {
   text-transform: uppercase;
   color: $main-font-color;
 }
+
 // .cross {
 // }
 .cart__list {
@@ -124,6 +126,7 @@ export default {
   margin-bottom: 12px;
   width: 100%;
 }
+
 .cart__item {
   display: flex;
   padding: 28px 0;
@@ -135,19 +138,23 @@ export default {
     border-bottom: 1px solid #bdbdbd;
   }
 }
+
 .cart__img {
   margin-right: 45px;
   width: 120px;
   height: auto;
 }
+
 .cart__info {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .cart__price {
   margin-left: auto;
 }
+
 .cart__description {
   display: flex;
 }
@@ -161,13 +168,16 @@ export default {
   line-height: 140%;
   color: #bdbdbd;
 }
+
 .cart-description__wrapper {
   display: flex;
   align-items: center;
 }
+
 .cart-description__img {
   margin-right: 10px;
 }
+
 .cart-description__text {
   font-style: normal;
   font-weight: 400;
@@ -188,6 +198,7 @@ export default {
   align-items: center;
   margin-bottom: 17px;
 }
+
 .cart__description {
   margin-bottom: 12px;
 

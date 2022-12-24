@@ -9,7 +9,7 @@
       </li>
     </ul>
     <a class="header__logo-link" href="/">
-      <img class="header__logo" src="../assets/images/logo.png" alt="" />
+      <img class="header__logo" src="../assets/images/logo.png" alt=""/>
     </a>
     <ul class="header__nav header-nav flex ml-auto">
       <li class="header-nav__item">
@@ -20,21 +20,21 @@
       </li>
       <li @click="toggleCart" class="header-nav__item">
         <a class="header-nav__link" href="#"
-          >CART {{ this.productStore.itemsInCart }}</a
+        >CART {{ this.productStore.itemsInCart }}</a
         >
       </li>
     </ul>
   </header>
-  <MyCart v-if="isCartOpen" v-on:closeCart="closeCart()" />
+  <MyCart v-if="isCartOpen" v-on:closeCart="closeCart()"/>
 </template>
 
 <script>
 import MyCart from "./MyCart.vue";
-import { useProductStore } from "@/store/productStore";
+import {useProductStore} from "@/store/productStore";
 
 export default {
   name: "MyHeaderVue",
-  components: { MyCart },
+  components: {MyCart},
 
   data() {
     return {
