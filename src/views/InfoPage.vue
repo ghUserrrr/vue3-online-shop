@@ -30,7 +30,8 @@
         <MyContactInfo/>
         <MyShippingAddress/>
         <div class="row space-between checkout__buttons">
-          <button class="checkout__btn btn-primary">Continue to shipping</button>
+          <button @click="
+          $router.push(`/checkout/shipping`)" class="checkout__btn btn-primary">Continue to shipping</button>
           <button class="btn-small">return to cart</button>
         </div>
       </form>
