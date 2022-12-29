@@ -5,7 +5,8 @@
       <MyShippingMethod/>
     </div>
     <div class="row space-between checkout__buttons">
-      <button class="checkout__btn btn-primary">Continue to payment</button>
+      <button @click="
+          $router.push(`/checkout/payment`)" class="checkout__btn btn-primary">Continue to payment</button>
       <button class="btn-small">return to cart</button>
     </div>
   </div>
