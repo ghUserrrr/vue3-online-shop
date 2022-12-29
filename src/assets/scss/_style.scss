@@ -93,13 +93,12 @@ body {
   background: #000000;
   transition: background 0.2s ease;
 
+  text-transform: uppercase;
+
   &:hover {
     background-color: #636363;
   }
 }
-
-// .btn-empty-inside {
-// }
 
 .main-font {
   font-family: "work-sans";
