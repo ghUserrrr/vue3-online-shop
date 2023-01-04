@@ -2,13 +2,13 @@
   <div class="client-info">
     <div class="client-info__item grid">
       <span class="client-info__title grey-txt">Contact</span>
-      <span class="client-info__value">maccartny@gmail.com</span>
+      <span class="client-info__value">{{ email }}</span>
       <button class="client-info__btn small-btn ml-auto">change</button>
     </div>
     <div class="client-info__item grid">
       <span class="client-info__title grey-txt">Ship to</span>
       <span class="client-info__value"
-      >9550 S Eastern Ave ste 253-A102 Las Vegas NV 89123</span
+      >{{ shippingAddress }}</span
       >
       <button class="client-info__btn small-btn ml-auto">change</button>
     </div>
@@ -19,12 +19,28 @@
 import {useProductStore} from "@/store/productStore";
 
 export default {
-  name: "MyClientPage",
+  name: "MyUserForm",
   setup() {
     const productStore = useProductStore();
     return {
       productStore,
     };
+  },
+  mounted() {
+    this.email = this.productStore.userInfo.contactInfo.email
+
+  },
+
+  data() {
+    return {
+      email: ''
+    }
+  },
+
+  computed: {
+    shippingAddress() {
+      return this.productStore.userInfo.shippingInfo.apartment + ' ' + this.productStore.userInfo.shippingInfo.address + ' ' + this.productStore.userInfo.shippingInfo.city + ' ' + this.productStore.userInfo.shippingInfo.zipCode
+    }
   },
 };
 </script>

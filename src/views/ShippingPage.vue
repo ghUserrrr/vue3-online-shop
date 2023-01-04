@@ -1,12 +1,13 @@
 <template>
   <div class="shipping">
-    <MyClientForm class="shipping__form"/>
+    <MyUserForm class="shipping__form"/>
     <div class="shipping__method">
       <MyShippingMethod/>
     </div>
     <div class="row space-between checkout__buttons">
       <button @click="
-          $router.push(`/checkout/payment`)" class="checkout__btn btn-primary">Continue to payment</button>
+          $router.push(`/checkout/payment`)" class="checkout__btn btn-primary">Continue to payment
+      </button>
       <button class="btn-small">return to cart</button>
     </div>
   </div>
@@ -15,11 +16,11 @@
 <script>
 import {useProductStore} from "@/store/productStore";
 import MyShippingMethod from "@/components/shipping/MyShippingMethod.vue";
-import MyClientForm from "@/components/MyClientForm.vue";
+import MyUserForm from "@/components/MyUserForm.vue";
 
 export default {
   name: "MyShipping",
-  components: {MyClientForm, MyShippingMethod},
+  components: {MyUserForm, MyShippingMethod},
   setup() {
     const productStore = useProductStore();
     return {

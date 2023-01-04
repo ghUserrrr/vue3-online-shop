@@ -5,10 +5,16 @@
       <p>Already have an account?</p>
       <button class="btn-small">sign in</button>
     </div>
-    <input class="checkout__input" type="email" placeholder="E-mail"/>
+    <input v-model="contactInfo.email" @input="setContactInfo()" class="checkout__input" type="email"
+           placeholder="E-mail"/>
     <div class="row">
-      <input class="checkout__checkbox" id="mail" type="checkbox"/>
-      <label class="grey-txt" for="mail">E-mail me with news and offers</label>
+      <input v-model="contactInfo.enableNotifications"
+             @click="contactInfo.enableNotifications = !contactInfo.enableNotifications;
+              setContactInfo()"
+             class="checkout__checkbox"
+             id="mail" type="checkbox"/>
+      <label class="grey-txt"
+             for="mail">E-mail me with news and offers</label>
     </div>
   </div>
 </template>
@@ -24,6 +30,24 @@ export default {
       productStore,
     };
   },
+  data() {
+    return {
+      contactInfo: {
+        email: '',
+        enableNotifications: false,
+      }
+    }
+  },
+
+  methods: {
+    setContactInfo() {
+      this.$emit('setContactInfo', this.contactInfo)
+    }
+  },
+
+  mounted() {
+    this.contactInfo = this.productStore.userInfo.contactInfo
+  }
 };
 </script>
 

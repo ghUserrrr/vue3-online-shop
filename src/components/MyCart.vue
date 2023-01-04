@@ -51,7 +51,11 @@
       <p class="cart__description">
         Shipping, taxes, and discounts will be calculated at checkout
       </p>
-      <button class="btn btn-primary">Checkout</button>
+      <button @click="
+          $router.push(`/checkout/info`);
+          closeCart()"
+              class="btn btn-primary">Checkout
+      </button>
     </div>
   </div>
 </template>

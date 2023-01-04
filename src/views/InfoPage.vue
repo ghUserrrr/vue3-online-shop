@@ -27,12 +27,13 @@
         <span>or</span>
       </h4>
       <form class="checkout__form checkout-form" action="">
-        <MyContactInfo/>
-        <MyShippingAddress/>
+        <MyContactInfo v-on:setContactInfo="setContactInfo"/>
+        <MyShippingAddress v-on:setShippingInfo="setShippingInfo"/>
         <div class="row space-between checkout__buttons">
           <button @click="
-          $router.push(`/checkout/shipping`)" class="checkout__btn btn-primary">Continue to shipping</button>
-          <button class="btn-small">return to cart</button>
+                    saveUserInfo();
+                    $router.push(`/checkout/shipping`)" class="checkout__btn btn-primary">Continue to shipping
+          </button>
         </div>
       </form>
     </div>
@@ -42,7 +43,7 @@
 <script>
 import {useProductStore} from "@/store/productStore";
 import MyContactInfo from "../components/info/MyContactInfo.vue";
-import MyShippingAddress from "../components/info/MyShippingAddress.vue";
+import MyShippingAddress from "../components/info/MyShippingInfo.vue";
 
 export default {
   name: "MyInfo",
@@ -53,6 +54,30 @@ export default {
     };
   },
   components: {MyShippingAddress, MyContactInfo},
+
+  data() {
+    return {
+      userInfo: {
+        shippingInfo: {},
+        contactInfo: {}
+      },
+    }
+  },
+
+  methods: {
+    setContactInfo($event) {
+      this.userInfo.contactInfo = $event
+    },
+    setShippingInfo($event) {
+      this.userInfo.shippingInfo = $event
+    },
+    saveUserInfo() {
+      this.productStore.userInfo = this.userInfo
+    }
+  },
+  mounted() {
+    this.userInfo = this.productStore.userInfo
+  }
 };
 </script>
 
