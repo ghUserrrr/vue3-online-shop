@@ -12,7 +12,7 @@
     <input v-model="shippingInfo.apartment" @input="setShippingInfo"
            class="checkout__input"
            type="text"
-           placeholder="Appartment, suite, etc. (optional)"
+           placeholder="Apartment, suite, etc. (optional)"
     />
     <input v-model="shippingInfo.city" @input="setShippingInfo" class="checkout__input" type="text"
            placeholder="City"/>
@@ -62,6 +62,9 @@ export default {
       productStore,
     };
   },
+  mounted() {
+    this.shippingInfo = this.productStore.userInfo.shippingInfo
+  }
 };
 </script>
 
