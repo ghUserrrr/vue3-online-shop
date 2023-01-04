@@ -38,7 +38,7 @@
                 <p class="cart-description__text">{{ product.size }}</p>
               </div>
             </div>
-            <button class="cart-item__btn btn-small">remove</button>
+            <button @click="deleteProduct(index)" class="cart-item__btn btn-small">remove</button>
           </div>
         </li>
       </ul>
@@ -76,6 +76,9 @@ export default {
     closeCart() {
       this.$emit("closeCart");
     },
+    deleteProduct(index) {
+      this.productStore.cart.splice(index, 1)
+    }
   },
 };
 </script>
@@ -94,6 +97,7 @@ export default {
   padding: 40px 70px;
   flex-direction: column;
   width: 50%;
+  overflow: scroll;
 
   background-color: #fff;
 }
