@@ -1,12 +1,13 @@
 <template>
-  <MyProductPage />
+  <MyProductPage/>
 </template>
 
 <script>
 import MyProductPage from "@/components/MyProductPage.vue";
 
 export default {
-  components: { MyProductPage },
+  name: 'productPage',
+  components: {MyProductPage},
 };
 </script>
 
