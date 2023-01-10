@@ -15,9 +15,6 @@
       <li class="header-nav__item">
         <a class="header-nav__link" href="#">SEARCH</a>
       </li>
-      <li class="header-nav__item">
-        <a class="header-nav__link" href="#">SIGN IN</a>
-      </li>
       <li @click="toggleCart" class="header-nav__item">
         <a class="header-nav__link" href="#"
         >CART {{ this.productStore.itemsInCart }}</a
