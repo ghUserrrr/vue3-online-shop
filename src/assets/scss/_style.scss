@@ -1,5 +1,5 @@
 body {
-  font-family: "work-sans", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'work-sans', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -57,7 +57,7 @@ body {
 }
 
 .btn {
-  font-family: "work-sans";
+  font-family: 'work-sans';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -101,7 +101,7 @@ body {
 }
 
 .main-font {
-  font-family: "work-sans";
+  font-family: 'work-sans';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -154,7 +154,7 @@ body {
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: relative;
 
     display: inline-block;
@@ -217,4 +217,12 @@ body {
 
 .checkout__btn {
   padding: 16px 153px;
+}
+
+.checkout__btn_disabled {
+  background-color: #636363;
+}
+
+.input_error {
+  border: 1px solid red;
 }
